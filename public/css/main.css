@@ -1,0 +1,18 @@
+
+.forms {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.forms > h1 {
+  text-align: center;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.test {
+  color: blue;
+}
