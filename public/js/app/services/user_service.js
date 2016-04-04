@@ -18,6 +18,7 @@
     return service;
 
     function create(data) {
+      $log.info("user data:", data);
       var promise = $http({
         method: 'POST',
         url: '/api/users',
@@ -34,6 +35,7 @@
     };
 
     function update(data) {
+      $log.info(data);
       var promise = $http({
         method: 'PUT',
         url:    '/api/users/me',

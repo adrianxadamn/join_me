@@ -1,0 +1,37 @@
+<h1>Creating a new Chatroom</h1>
+
+
+<div class="forms">
+  <h1 id="header">Create Chatroom</h1>
+    <form ng-submit="vm.newChatroom()">
+      <div class="form-group">
+        <label for="exampleInputTitle">Title</label>
+        <input ng-model="vm.createChatroom.title" type="text" class="form-control" id="exampleInputTitle" placeholder="Email">
+      </div>
+      <div class="form-group">
+        <label for="thumbnail">Thumbnail</label>
+        <input ng-model="vm.createChatroom.thumbnail" type="text" class="form-control" id="thumbnail" placeholder="Thumbnail">
+      </div>
+      <div class="form-group">
+        <label for="video">Video</label>
+        <input ng-model="vm.createChatroom.video" type="text" class="form-control" id="video" placeholder="Video">
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input ng-model="vm.createChatroom.description" type="text" class="form-control" id="description" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <label for="userCapacity">Number of Users</label>
+        <input ng-model="vm.createChatroom.userCapacity" type="number" class="form-control" id="userCapacity" placeholder="Number of Users">
+      </div>
+
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
+    <div>
+      <p> Don't have an account?
+      <a ng-click="vm.toggleSignInForm()"><u>Sign Up</u></a>
+      , here.
+
+    </div>
+</div>

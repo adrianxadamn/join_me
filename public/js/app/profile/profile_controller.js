@@ -20,6 +20,7 @@
     vm.submitUpdate = submitUpdate;
 
     function submitUpdate() {
+      $log.info("submitting")
       userService
         .update(vm.formData)
         .then(function(res) {

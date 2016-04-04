@@ -25,12 +25,20 @@
       // })
       .state("chatroom_list", {
         url: "/chatrooms",
-        templateUrl: "/js/app/chatroom/chatrooms.html"
+        templateUrl: "/js/app/chatroom/chatrooms.html",
+        controller: "ChatroomController",
+        controllerAs: "vm"
       })
       .state("profile", {
         url: "/profile",
         templateUrl: "/js/app/profile/profile.html",
         controller: "ProfileController",
+        controllerAs: "vm"
+      })
+      .state("newChatroom", {
+        url: "/newChatroom",
+        templateUrl: "/js/app/chatroom/new_chatroom.html",
+        controller: "ChatroomController",
         controllerAs: "vm"
       });
 
