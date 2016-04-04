@@ -1,5 +1,5 @@
 
-<div class="forms">
+<div class="forms" ng-show="vm.toggleValue">
   <h1 id="header">Sign In</h1>
     <form ng-submit="vm.submitLogIn()">
       <div class="form-group">
@@ -15,14 +15,15 @@
     </form>
 
     <div>
-      <p> Don't have an account? <u>Sign Up</u>, here.
-      <p> Or Login with <a href="/auth/google">Google</a>
+      <p> Don't have an account?
+      <a ng-click="vm.toggleSignInForm()"><u>Sign Up</u></a>
+      , here.
 
     </div>
 </div>
 
 
-<div class="forms">
+<div class="forms" ng-hide="vm.toggleValue">
   <h1 id="header">Sign Up</h1>
     <form ng-submit="vm.signUp()">
       <div class="form-group">
@@ -44,4 +45,14 @@
 
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
+
+  <div>
+    <p>
+      <strong>
+        If you are a user,
+        <a ng-click="vm.toggleSignInForm()">Sign In</a>.
+      </strong>
+    </p>
+  </div>
+
 </div>

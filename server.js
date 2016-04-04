@@ -6,7 +6,6 @@ var bodyParser   = require('body-parser');
 var debug        = require('debug')('app:http');
 var cookieParser = require('cookie-parser');
 var session      = require('express-session');
-var passport     = require('passport');
 
 // Load local libraries.
 var env      = require('./config/environment'),

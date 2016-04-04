@@ -13,6 +13,8 @@
 
     vm.signUp = signUp;
     vm.submitLogIn = submitLogIn;
+    vm.toggleSignInForm = toggleSignInForm;
+    vm.toggleValue = true;
 
 
     function submitLogIn() {
@@ -28,8 +30,6 @@
           }
         );
     };
-
-
 
     //creates a new User into the database
     function signUp() {
@@ -47,6 +47,11 @@
         );
     };
 
+    //Toggles Sign in Form
+    function toggleSignInForm() {
+      $log.info("sup");
+      vm.toggleValue =  !vm.toggleValue;
+    }
 
   };
 })();
