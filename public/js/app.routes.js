@@ -19,10 +19,12 @@
         controller: "LoginController",
         controllerAs: "vm"
       })
-      // .state("chatroom", {
-      //   url: "/chatroom", //this might needs it's own ID
-      //   templateUrl: "/js/app/layouts/home.html",
-      // })
+      .state("chatroom", {
+        url: "/chatroom",
+        templateUrl: "/js/app/chatroom/singlechatroom.html",
+        controller: "ChatroomController",
+        controllerAs: "vm"
+      })
       .state("chatroom_list", {
         url: "/chatrooms",
         templateUrl: "/js/app/chatroom/chatrooms.html",

@@ -37,8 +37,20 @@ function getAll(req, res, next) {
   });
 };
 
+function show(req, res, next) {
+  var id = req.params.id;
+
+  Chatroom.findById(id, function(err, chatroom) {
+    if (err) {
+      res.send(err);
+    }
+    res.json(chatroom);
+  });
+};
+
 
 module.exports = {
   create: create,
-  getAll: getAll
+  getAll: getAll,
+  show: show
 }

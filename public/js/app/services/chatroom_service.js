@@ -10,9 +10,18 @@
   function chatroomService($log, $http) {
     $log.info("chatroom service is in da house");
     var vm = this;
+    vm.chatroom = {
+      title: "",
+      video: "",
+      thumbnail: "",
+      description: "",
+      userCapacity: ""
+    };
 
     var service = {
-      create: create
+      create: create,
+      store: store,
+      retrieve: retrieve
     };
 
     return service;
@@ -32,6 +41,20 @@
       );
       return promise;
     };
+
+    function store(data) {
+      $log.info("storing data:", data);
+      vm.chatroom.title = data.title
+      $log.info(vm.chatroom);
+    }
+
+    function retrieve() {
+      $log.info("THISSSS:",vm.chatroom.title);
+      var title = vm.chatroom.title;
+      $log.info("title:", title)
+      return title;
+    }
+
   };
 
 })();

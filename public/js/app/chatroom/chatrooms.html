@@ -6,25 +6,15 @@
 
       <div class="row">
 
-<!--         <div class="col-md-4">
-          <div class="thumbnail">
-            <img src="http://www.warrenbeer.com/warren/images/products/beer/millercoors/best_ice/can_12oz_30pk.jpg" alt="beer">
-            <div class="caption">
-              <p>No finer time to drink a beer with a new friend. Please call me.</p>
-              <a class="btn btn-default" href="https://www.google.com/search?q=beer&espv=2&biw=1275&bih=682&source=lnms&tbm=isch&sa=X&ved=0CAgQ_AUoA2oVChMIzK_L-sflyAIVSP5jCh3Zdw-Z">More Beer</a>
-            </div>
-          </div>
-        </div>
- -->
         <div ng-repeat="chatroom in vm.all" class="col-md-4">
-          <h3>{{chatroom.title}}</h3>
+          <h3 id="{{chatroom._id}}">{{chatroom.title}}</h3>
           <div class="thumbnail">
             <img src="{{chatroom.thumbnail}}" width="350" height="300">
             <div class="caption">
               <p><b>Owner: {{chatroom.owner}}</b> </p>
               <p>{{chatroom.description}}</p>
               <p><b>Number of Users:</b> 0/{{chatroom.userCapacity}}</p>
-              <a class="btn btn-default">Join!</a>
+              <a ng-click="vm.joinChatroom(chatroom._id)" class="btn btn-default">Join!</a>
             </div>
           </div>
         </div>
