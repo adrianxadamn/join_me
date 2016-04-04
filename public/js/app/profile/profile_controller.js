@@ -10,11 +10,12 @@
   function ProfileController($log, authService, userService, $state) {
     $log.info('profile controller is in da house');
     var vm = this;
-
     vm.formData = {
       email: authService.currentUser().email, // This just copies the
-      name:  authService.currentUser().name   // string values, instead
+      name:  authService.currentUser().name,
+      picture_url: authService.currentUser().picture_url   // string values, instead
     };                                        // of binding some object.
+    $log.info(vm.formData)
     vm.authService = authService;
     vm.submitUpdate = submitUpdate;
 

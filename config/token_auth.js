@@ -23,6 +23,7 @@ function create(req, res, next) {
         var token = generate({
             email: user.email,
             name:  user.username,
+            picture_url: user.picture_url,
             use:   'public_api'
         });
         res.json({

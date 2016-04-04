@@ -1,7 +1,8 @@
 <h1>{{ vm.authService.currentUser().name }}'s Profile</h1>
 
+<img src="{{ vm.authService.currentUser().picture_url }}" width="200" height="200">
+<div class="forms">
  <h3>Update your user info</h3>
-
  <form ng-submit="vm.submitUpdate()">
    <div class="form-group">
      <label for="exampleInputEmail1">Email address</label>
@@ -19,5 +20,10 @@
      <label for="exampleInputPassword2">Password confirmation</label>
      <input ng-model="vm.formData.passwordConfirmation" type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
    </div>
+   <div class="form-group">
+     <label for="exampleInputProfileUrl">Profile Url</label>
+     <input ng-model="vm.formData.picture_url" type="text" class="form-control" id="exampleInputProfileUrl" placeholder="https://">
+   </div>
    <button type="submit" class="btn btn-default">Update</button>
  </form>
+</div>

@@ -15,8 +15,7 @@
       isLoggedIn: isLoggedIn,
       logout: logout,
       currentUser: currentUser,
-      refreshToken: refreshToken,
-      user: ""
+      refreshToken: refreshToken
     }
 
     return service;
@@ -60,8 +59,6 @@
     }
 
     function logIn(data) {
-      $log.info("Login this data", data.email);
-      service.user = data.email;
 
       var promise = $http({
         method: 'POST',

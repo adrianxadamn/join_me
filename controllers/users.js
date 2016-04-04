@@ -13,8 +13,8 @@ function create(req, res, next) {
         message: 'Successfully created user.',
         data: {
           email: user.email,
-          name:  user.username,
-          picture: user.picture_url,
+          username:  user.username,
+          picture_url: user.picture_url,
           id:    user._id
         }
       });
