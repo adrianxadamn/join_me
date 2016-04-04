@@ -6,7 +6,7 @@
     <form ng-submit="vm.newChatroom()">
       <div class="form-group">
         <label for="exampleInputTitle">Title</label>
-        <input ng-model="vm.createChatroom.title" type="text" class="form-control" id="exampleInputTitle" placeholder="Email">
+        <input ng-model="vm.createChatroom.title" type="text" class="form-control" id="exampleInputTitle" placeholder="Title">
       </div>
       <div class="form-group">
         <label for="thumbnail">Thumbnail</label>
@@ -28,10 +28,4 @@
       <button type="submit" class="btn btn-default">Submit</button>
     </form>
 
-    <div>
-      <p> Don't have an account?
-      <a ng-click="vm.toggleSignInForm()"><u>Sign Up</u></a>
-      , here.
-
-    </div>
 </div>

@@ -27,12 +27,18 @@ function create(req, res, next) {
     });
 };
 
-function show(req, res, next) {
+function getAll(req, res, next) {
+  Chatroom.find({}, function(err, chatrooms) {
+    if (err) {
+      res.send(err);
+    }
 
+    res.json(chatrooms);
+  });
 };
 
 
 module.exports = {
   create: create,
-  show: show
+  getAll: getAll
 }

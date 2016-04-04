@@ -9,6 +9,7 @@
 
   function chatroomService($log, $http) {
     $log.info("chatroom service is in da house");
+    var vm = this;
 
     var service = {
       create: create
@@ -31,7 +32,6 @@
       );
       return promise;
     };
-
   };
 
 })();

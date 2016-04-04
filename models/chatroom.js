@@ -10,8 +10,11 @@ var chatroomSchema = new mongoose.Schema({
   thumbnail:        { type: String },
   video:            { type: String },
   description:      { type: String },
-  userCapacity:     { type: Number }
-  // users:            [userSchema]
+  userCapacity:     { type: Number },
+  users:            [{
+                      type: mongoose.Schema.Types.ObjectId,
+                      ref: "User"
+                    }],
 
 
 });
