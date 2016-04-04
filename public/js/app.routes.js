@@ -25,8 +25,13 @@
       // })
       .state("chatroom_list", {
         url: "/chatrooms",
-        templateUrl: "/js/app/chatroom/chatrooms.html",
+        templateUrl: "/js/app/chatroom/chatrooms.html"
+      })
+      .state("profile", {
+        url: "/profile",
+        templateUrl: "/js/app/layouts/profile.html"
       });
+
 
     $urlRouterProvider.otherwise("/");
 
