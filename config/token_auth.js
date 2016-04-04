@@ -4,7 +4,8 @@ var User = require('../models/user');
 
 module.exports = {
   create:       create,
-  authenticate: authenticate
+  authenticate: authenticate,
+  refresh: refresh
 };
 
 // This function will create a JWT and return it to the user in the
@@ -29,6 +30,23 @@ function create(req, res, next) {
           token:   token
         });
       }
+    });
+}
+
+/**
+ * Creates a new JWT for an authenticated user (using the authenticate
+ * method below) and returns it.
+ */
+function refresh(req, res, next) {
+  User
+    .findById(req.decoded._id).exec()
+    .then(function(user) {
+      var token = generateJwt(user);
+
+      res.json({
+        message: 'Successfully generated token',
+        token:   token
+      });
     });
 }
 

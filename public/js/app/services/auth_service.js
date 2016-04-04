@@ -13,10 +13,42 @@
     var service = {
       logIn: logIn,
       isLoggedIn: isLoggedIn,
-      logout: logout
+      logout: logout,
+      currentUser: currentUser,
+      refreshToken: refreshToken,
+      user: ""
     }
 
     return service;
+
+    function refreshToken() {
+      var promise = $http({
+        method: 'POST',
+        url:    '/api/users/me/token'
+      })
+      .then(function(res) {
+        token.store(res.data.token);
+        return token.decode();
+      });
+
+      return promise;
+    }
+
+    function currentUser() {
+      var tokenData = tokenService.decode();
+       if (tokenData) {
+        // No real reason to do this, just showing you
+        // how it can be done. We can clean out (remove)
+        // properties from the token that are about the token
+        // itself, not the user; this cleans up the data.
+        tokenData.expiresAt = Date(tokenData.exp);
+        delete tokenData.exp;
+        delete tokenData.iat;
+      }
+       // $log.info("Current user retrieved:", tokenData);
+       return tokenData;
+    }
+
 
     function logout() {
       tokenService.destroy();
@@ -28,15 +60,13 @@
     }
 
     function logIn(data) {
-      $log.info("check me @ authservice", data);
+      $log.info("Login this data", data.email);
+      service.user = data.email;
 
       var promise = $http({
         method: 'POST',
         url: '/api/token',
-        data: data,
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        data: data
       })
       .then(
         function(res) {

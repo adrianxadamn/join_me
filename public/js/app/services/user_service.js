@@ -5,13 +5,14 @@
     .module("app")
     .factory("userService", userService);
 
-  userService.$inject = ["$log", "$http", "authService"];
+  userService.$inject = ["$log", "$http", "authService", "tokenService"];
 
-  function userService($log, $http, authService) {
+  function userService($log, $http, authService, tokenService) {
     $log.info("user service is in da house");
 
     var service = {
-      create: create
+      create: create,
+      update: update
     };
 
     return service;
@@ -20,10 +21,7 @@
       var promise = $http({
         method: 'POST',
         url: '/api/users',
-        data: data,
-        headers: {
-          'Content-Type' : 'application/json'
-        }
+        data: data
       })
       .then(
         function(res) {
@@ -34,6 +32,16 @@
 
       return promise;
     };
+
+    function update(data) {
+      var promise = $http({
+        method: 'PUT',
+        url:    '/api/users/me',
+        data:   data
+      });
+
+      return promise;
+    }
 
 
 

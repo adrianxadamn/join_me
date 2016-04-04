@@ -12,9 +12,6 @@
     var vm = this;
 
     vm.authService = authService;
-    vm.currentUser = {
-      username: "adrian"
-    }
   };
 
 

@@ -19,6 +19,7 @@
 
     function submitLogIn() {
       $log.info("Loggin in:", vm.currentLogInInfo);
+
       authService
         .logIn(vm.currentLogInInfo)
         .then(
