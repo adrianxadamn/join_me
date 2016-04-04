@@ -29,6 +29,22 @@ function create(req, res, next) {
 };
 
 
+function me(req, res, next) {
+  User
+    .findOne({email: req.decoded.email}).exec()
+    .then(function(user) {
+      res.json({
+        success: true,
+        message: 'Successfully retrieved user data.',
+        data: user
+      });
+    })
+    .catch(function(err) {
+      next(err);
+    });
+};
+
 module.exports = {
-  create: create
+  create: create,
+  me: me
 };
