@@ -23,22 +23,22 @@
 
 <div class="forms">
   <h1 id="header">Sign Up</h1>
-    <form>
+    <form ng-submit="vm.signUp()">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        <input ng-model="vm.createUser.email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Username</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Username">
+        <input ng-model="vm.createUser.username" type="text" class="form-control" id="exampleInputPassword1" placeholder="Username">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <input ng-model="vm.createUser.password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
       </div>
-            <div class="form-group">
+      <div class="form-group">
         <label for="exampleInputPassword1">Password Confirmation</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password Confirmation">
+        <input ng-model="vm.createUser.passwordConfirmation" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password Confirmation">
       </div>
 
       <button type="submit" class="btn btn-default">Submit</button>

@@ -16,6 +16,8 @@
       .state("signin", {
         url: "/signin",
         templateUrl: "/js/app/login/signin.html",
+        controller: "LoginController",
+        controllerAs: "vm"
       })
       // .state("chatroom", {
       //   url: "/chatroom", //this might needs it's own ID
