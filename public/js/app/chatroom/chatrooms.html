@@ -11,7 +11,8 @@
           <div class="thumbnail">
             <img src="http://img.youtube.com/vi/{{chatroom.video}}/0.jpg" width="350" height="300">
             <div class="caption">
-              <p><b>Owner: {{chatroom.owner}}</b> </p>
+              <p><b>OwnerId: {{chatroom.creator}}</b> </p>
+              <p><b>OwnerUsername: {{chatroom.creatorName}}</b></p>
               <p>{{chatroom.description}}</p>
               <p><b>Number of Users:</b> 0/{{chatroom.userCapacity}}</p>
               <a ng-click="vm.joinChatroom(chatroom._id)" class="btn btn-default">Join!</a>

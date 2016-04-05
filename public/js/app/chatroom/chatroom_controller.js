@@ -13,20 +13,15 @@
     vm.all = [];
 
     vm.chatroomService = chatroomService;
-    // vm.chatroom = {
-    //   title: "",
-    //   video: "",
-    //   thumbnail: "",
-    //   description: "",
-    //   userCapacity: ""
-    // };
 
     vm.retrieveChatrooms = retrieveChatrooms;
     vm.newChatroom = newChatroom;
     vm.joinChatroom = joinChatroom;
 
+    //youtube source
     vm.youtubeSRC = `https://www.youtube.com/embed/${vm.chatroomService.retrieve().video}`
-
+    //youtube wireframe to be render onto single chatroom page
+      //Needs $sce.trustAsHtml to let the application render <iframe> tags
     vm.youtubeWF = $sce.trustAsHtml(`<iframe width="560" height="315" src=${vm.youtubeSRC} frameborder="0" allowfullscreen></iframe>`);
     $log.info("LOOK HERE:", vm.youtubeWF);
 

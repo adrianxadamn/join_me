@@ -5,14 +5,18 @@ function create(req, res, next) {
   User.findById(req.decoded._id).exec()
     .then(function(user) {
       console.log(user._id);
+      console.log(user.username);
       var userId = user._id;
+      var username = user.username;
+      console.log("creatorName:", username)
       Chatroom
         .create({
               title: req.body.title,
               video: req.body.video,
               description: req.body.description,
               userCapacity: req.body.userCapacity,
-              creator: userId
+              creator: userId,
+              creatorName: username
             })
         .then(function(chatroom) {
           console.log("WHAT IS userId:", userId)
@@ -25,7 +29,8 @@ function create(req, res, next) {
               description: chatroom.description,
               userCapacity: chatroom.userCapacity,
               id: chatroom._id,
-              creator: userId
+              creator: userId,
+              creatorName: username
             }
           });
         }).catch(function(err) {
