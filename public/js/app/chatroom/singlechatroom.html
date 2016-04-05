@@ -1,7 +1,17 @@
-<h1>Single Chatroom</h1>
-<div>
-<p>{{vm.chatroomService.retrieve().title}}</p>
-<p>{{vm.chatroomService.retrieve().video}}</p>
-<p>{{vm.chatroomService.retrieve().userCapacity}}</p>
-<div ng-bind-html="vm.youtubeWF"></div>
+
+<div class="wrapper">
+  <div class="column1">
+    <h1 class="title">Title: {{vm.chatroomService.retrieve().title}}</h1>
+    <div class="text-align" ng-bind-html="vm.youtubeWF"></div>
+    <h3 class="text-align">Owner: {{vm.chatroomService.retrieve().creatorName}}</h3>
+    <p class="text-align">Description: {{vm.chatroomService.retrieve().description}}</p>
+<!--     <p>Video Id: {{vm.chatroomService.retrieve().video}}</p> -->
+  </div>
+  <div class="column2">
+    <p>Number of Users: {{vm.chatroomService.retrieve().userCapacity}}</p>
+    <div class="chat-messages"></div>
+    <div class="chat-box"></div>
+    <div class="list-of-users"></div>
+    <button></button>
+  </div>
 </div>

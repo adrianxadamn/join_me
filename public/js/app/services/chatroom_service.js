@@ -14,7 +14,8 @@
       title: "",
       video: "",
       description: "",
-      userCapacity: ""
+      userCapacity: "",
+      creatorName: ""
     };
 
     var service = {
@@ -46,6 +47,8 @@
       vm.chatroom.title = data.title
       vm.chatroom.video = data.video;
       vm.chatroom.userCapacity = data.userCapacity;
+      vm.chatroom.creatorName = data.creatorName;
+      vm.chatroom.description = data.description;
       $log.info(vm.chatroom);
     }
 
