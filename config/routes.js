@@ -15,7 +15,7 @@ router.delete('/users/:id', usersController.destroy);
 router.get('/users', usersController.getAll);
 router.get('/users/:id', usersController.show);
 
-router.post('/chatrooms', chatroomsController.create);
+router.post('/chatrooms', token.authenticate, chatroomsController.create);
 router.get('/chatrooms', chatroomsController.getAll);
 router.get('/chatrooms/:id', chatroomsController.show);
 

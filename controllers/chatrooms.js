@@ -2,29 +2,43 @@ var Chatroom = require("../models/chatroom");
 var User     = require("../models/user");
 
 function create(req, res, next) {
-  Chatroom
-    .create(req.body)
-    .then(function(chatroom) {
-      res.json({
-        success: true,
-        message: "Successfully created Chatroom.",
-        data: {
-          title: chatroom.title,
-          video: chatroom.video,
-          description: chatroom.description,
-          userCapacity: chatroom.userCapacity,
-          id: chatroom._id
-        }
-      });
-    }).catch(function(err) {
-      if (err.message.match(/E11000/)) {
-        err.status = 409;
-      } else {
-        err.status = 422;
-      }
-      next(err);
-    });
-};
+  User.findById(req.decoded._id).exec()
+    .then(function(user) {
+      console.log(user._id);
+      var userId = user._id;
+      Chatroom
+        .create({
+              title: req.body.title,
+              video: req.body.video,
+              description: req.body.description,
+              userCapacity: req.body.userCapacity,
+              creator: userId
+            })
+        .then(function(chatroom) {
+          console.log("WHAT IS userId:", userId)
+          res.json({
+            success: true,
+            message: "Successfully created Chatroom.",
+            data: {
+              title: chatroom.title,
+              video: chatroom.video,
+              description: chatroom.description,
+              userCapacity: chatroom.userCapacity,
+              id: chatroom._id,
+              creator: userId
+            }
+          });
+        }).catch(function(err) {
+          if (err.message.match(/E11000/)) {
+            err.status = 409;
+          } else {
+            err.status = 422;
+          }
+          next(err);
+        });
+    })
+  }
+// };
 
 function getAll(req, res, next) {
   Chatroom.find({}, function(err, chatrooms) {

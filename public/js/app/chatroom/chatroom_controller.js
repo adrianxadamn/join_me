@@ -5,9 +5,9 @@
     .module("app")
     .controller("ChatroomController", ChatroomController);
 
-  ChatroomController.$inject = ["$log", "chatroomService", "$http", "$state"];
+  ChatroomController.$inject = ["$log", "chatroomService", "$http", "$state", "$sce"];
 
-  function ChatroomController($log, chatroomService, $http, $state) {
+  function ChatroomController($log, chatroomService, $http, $state, $sce) {
     $log.info("chatroom controlla is in da house");
     var vm = this;
     vm.all = [];
@@ -24,6 +24,11 @@
     vm.retrieveChatrooms = retrieveChatrooms;
     vm.newChatroom = newChatroom;
     vm.joinChatroom = joinChatroom;
+
+    vm.youtubeSRC = `https://www.youtube.com/embed/${vm.chatroomService.retrieve().video}`
+
+    vm.youtubeWF = $sce.trustAsHtml(`<iframe width="560" height="315" src=${vm.youtubeSRC} frameborder="0" allowfullscreen></iframe>`);
+    $log.info("LOOK HERE:", vm.youtubeWF);
 
     function joinChatroom(data) {
       $log.info("trying to enter chatroom");

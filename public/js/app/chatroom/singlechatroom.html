@@ -3,5 +3,5 @@
 <p>{{vm.chatroomService.retrieve().title}}</p>
 <p>{{vm.chatroomService.retrieve().video}}</p>
 <p>{{vm.chatroomService.retrieve().userCapacity}}</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/{{vm.chatroomService.retrieve().video}}" frameborder="0" allowfullscreen></iframe>
+<div ng-bind-html="vm.youtubeWF"></div>
 </div>

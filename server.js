@@ -65,13 +65,19 @@ app.use(function(req, res, next) {
 // Error-handling layer.
 app.use(addFailedAuthHeader);
 app.use(function(err, req, res, next) {
-  // In development, the error handler will print stacktrace.
-  err = (app.get('env') === 'development') ? err : {};
-  res.status(err.status || 500);
-  res.json('error', {
-    message: err.message,
-    error: err
-  });
+  var message = err.message,
+      status  = err.status || 500;
+
+  res.status(status);
+
+  if (app.get('env') === 'development' && status === 500) {
+    res.json({
+      message: message,
+      error: err
+    });
+  } else {
+    res.json(message);
+  }
 });
 
 
