@@ -11,6 +11,9 @@ router.post('/users', usersController.create);
 router.get( '/users/me', token.authenticate, usersController.me);
 router.put( '/users/me', token.authenticate, usersController.update);
 router.post('/users/me/token', token.authenticate, token.refresh);
+router.delete('/users/:id', usersController.destroy);
+router.get('/users', usersController.getAll);
+router.get('/users/:id', usersController.show);
 
 router.post('/chatrooms', chatroomsController.create);
 router.get('/chatrooms', chatroomsController.getAll);

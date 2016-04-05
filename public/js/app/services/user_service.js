@@ -12,7 +12,8 @@
 
     var service = {
       create: create,
-      update: update
+      update: update,
+      destroy: destroy
     };
 
     return service;
@@ -45,7 +46,20 @@
       return promise;
     }
 
+    function destroy(id) {
+      $log.info(id);
+      var promise = $http({
+        method: "DELETE",
+        url: '/api/users/' + id,
+        data: id,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
+      return promise;
+
+    }
 
 
   };

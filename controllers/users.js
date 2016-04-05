@@ -70,8 +70,40 @@ function me(req, res, next) {
     });
 };
 
+function destroy(req, res, next) {
+  var id = request.params.id;
+  User.remove({_id: id}, function(error) {
+    if (error) res.json({message: error});
+
+    res.json({message: "User successfully deleted"});
+  });
+}
+
+function getAll(req, res, next) {
+  User.find({}, function(err, users) {
+    if(err) {
+      res.send(err);
+    }
+    res.json(users);
+  });
+};
+
+function show(req, res, next) {
+  var id = req.params.id;
+
+  User.findById(id, function(err, user) {
+    if(err) {
+      res.send(err);
+    }
+    res.json(user);
+  });
+};
+
 module.exports = {
   create: create,
   me: me,
-  update: update
+  update: update,
+  destroy: destroy,
+  getAll: getAll,
+  show, show
 };

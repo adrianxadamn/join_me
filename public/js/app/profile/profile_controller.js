@@ -5,9 +5,9 @@
     .module('app')
     .controller('ProfileController', ProfileController);
 
-  ProfileController.$inject = ["$log", "authService", "userService", "$state"];
+  ProfileController.$inject = ["$log", "authService", "userService", "$state", "tokenService"];
 
-  function ProfileController($log, authService, userService, $state) {
+  function ProfileController($log, authService, userService, $state, tokenService) {
     $log.info('profile controller is in da house');
     var vm = this;
     vm.formData = {
@@ -18,6 +18,7 @@
     $log.info(vm.formData)
     vm.authService = authService;
     vm.submitUpdate = submitUpdate;
+    vm.deleteUser = deleteUser;
 
     function submitUpdate() {
       $log.info("submitting")
@@ -39,6 +40,19 @@
           })
         .catch(function(err) {
           $log.info('Error:', err);
+        });
+    }
+
+    function deleteUser(id) {
+      $log.info("deleting user")
+      userService
+        .destroy(id)
+        .then(function() {
+          $log.info("deleted!");
+          $state.go("home");
+          tokenService.destroy();
+        }, function(err) {
+          $log.info(err);
         });
     }
 

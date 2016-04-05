@@ -16,7 +16,7 @@
   <nav ng-controller="NavbarController as vm" class="navbar navbar-default">
     <div class="container-fluid">
       <div class="nav tabs">
-        <button class="btn navbar-btn btn-default" role="presentation"><a ui-sref="home/">Home</a></button>
+        <button class="btn navbar-btn btn-default" role="presentation"><a ui-sref="home">Home</a></button>
         <button ng-show="vm.authService.isLoggedIn()" class="btn navbar-btn btn-default" role="presentation"><a ui-sref="profile">Profile</a></button>
         <button class="btn navbar-btn btn-default" role="presentation"><a ui-sref="chatroom_list">Chatrooms</a></button>
         <button ng-hide="vm.authService.isLoggedIn()" type="button" class="btn navbar-btn btn-default navbar-right" aria-label="Left Align"><a ui-sref="signin">Sign In</a></button>

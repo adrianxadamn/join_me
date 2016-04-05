@@ -24,6 +24,7 @@ function create(req, res, next) {
             email: user.email,
             name:  user.username,
             picture_url: user.picture_url,
+            _id: user._id,
             use:   'public_api'
         });
         res.json({

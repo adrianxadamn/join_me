@@ -10,7 +10,6 @@ function create(req, res, next) {
         message: "Successfully created Chatroom.",
         data: {
           title: chatroom.title,
-          thumbnail: chatroom.thumbnail,
           video: chatroom.video,
           description: chatroom.description,
           userCapacity: chatroom.userCapacity,

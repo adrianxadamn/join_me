@@ -11,7 +11,7 @@
     $stateProvider
       .state("home", {
         url: "/",
-        templateUrl: "/js/app/layouts/home.html",
+        templateUrl: "/js/app/layouts/home.html"
       })
       .state("signin", {
         url: "/signin",

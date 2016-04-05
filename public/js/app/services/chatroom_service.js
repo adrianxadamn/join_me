@@ -13,7 +13,6 @@
     vm.chatroom = {
       title: "",
       video: "",
-      thumbnail: "",
       description: "",
       userCapacity: ""
     };
@@ -45,14 +44,14 @@
     function store(data) {
       $log.info("storing data:", data);
       vm.chatroom.title = data.title
+      vm.chatroom.video = data.video;
+      vm.chatroom.userCapacity = data.userCapacity;
       $log.info(vm.chatroom);
     }
 
     function retrieve() {
-      $log.info("THISSSS:",vm.chatroom.title);
-      var title = vm.chatroom.title;
-      $log.info("title:", title)
-      return title;
+
+      return vm.chatroom;
     }
 
   };
