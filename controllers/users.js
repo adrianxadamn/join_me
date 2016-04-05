@@ -70,14 +70,17 @@ function me(req, res, next) {
     });
 };
 
-function destroy(req, res, next) {
-  var id = request.params.id;
-  User.remove({_id: id}, function(error) {
-    if (error) res.json({message: error});
 
-    res.json({message: "User successfully deleted"});
-  });
-}
+function destroy(req, res, next) {
+  User
+  .findByIdAndRemove(req.params.id)
+  .then(function(results) {
+    res.json(results);
+  })
+  .catch(function(err) {
+    console.log(err);
+  })
+};
 
 function getAll(req, res, next) {
   User.find({}, function(err, users) {

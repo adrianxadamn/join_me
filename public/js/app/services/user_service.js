@@ -50,13 +50,8 @@
       $log.info(id);
       var promise = $http({
         method: "DELETE",
-        url: '/api/users/' + id,
-        data: id,
-        headers: {
-          'Content-Type': 'application/json'
-        }
+        url: '/api/users/' + id
       });
-
       return promise;
 
     }
