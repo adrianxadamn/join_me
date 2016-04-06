@@ -6,6 +6,7 @@ function create(req, res, next) {
     .then(function(user) {
       console.log(user._id);
       console.log(user.username);
+      var userObject = user;
       var userId = user._id;
       var username = user.username;
       console.log("creatorName:", username)
@@ -17,10 +18,17 @@ function create(req, res, next) {
               userCapacity: req.body.userCapacity,
               creator: userId,
               creatorName: username,
-              users: [userId]
+              // users: [userId]
             })
         .then(function(chatroom) {
-          console.log("WHAT IS userId:", userId)
+          console.log("WHAT IS userId:", userId);
+          console.log("User Object trying to push:", userObject);
+          console.log("The Chatroom:", chatroom);
+          chatroom.users.push(userObject);
+          console.log("The Chatroom: pushed", chatroom);
+          chatroom.save();
+          console.log("The Chatroom: saved", chatroom);
+
           res.json({
             success: true,
             message: "Successfully created Chatroom.",
@@ -47,12 +55,9 @@ function create(req, res, next) {
 // };
 
 function getAll(req, res, next) {
-  Chatroom.find({}, function(err, chatrooms) {
-    if (err) {
-      res.send(err);
-    }
-
-    res.json(chatrooms);
+  Chatroom.find({}).populate("users").exec()
+    .then(function(chatrooms) {
+      res.json(chatrooms);
   });
 };
 
@@ -74,12 +79,14 @@ function update(req, res, next) {
   console.log("YOOO reqbody Id:", req.body);
   User.findById(req.decoded._id).exec()
     .then(function(user) {
-      var userId = user._id;
+      // var userId = user._id;
+      console.log("CHECK THE USER:", user);
+      var userObject = user;
       Chatroom.findById(chatroomId, function(err, chatroom) {
         if (err) {
           res.send(err);
         }
-        chatroom.users.push(userId);
+        chatroom.users.push(userObject);
         chatroom.save(function(err, response) {
           console.log("successfully saved!", response);
           res.json({success: "YASS"})
