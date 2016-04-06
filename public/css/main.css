@@ -74,3 +74,15 @@ a {
   text-align: center;
 }
 
+#text {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.send {
+  display: flex;
+}
+
+.send-message {
+  width:64px;
+}
