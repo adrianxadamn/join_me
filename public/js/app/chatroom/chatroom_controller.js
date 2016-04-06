@@ -5,12 +5,15 @@
     .module("app")
     .controller("ChatroomController", ChatroomController);
 
-  ChatroomController.$inject = ["$log", "chatroomService", "$http", "$state", "$sce", "authService"];
+  ChatroomController.$inject = ["$log", "chatroomService", "$http", "$state", "$sce", "authService", "socketService", "$scope"];
 
-  function ChatroomController($log, chatroomService, $http, $state, $sce, authService) {
+  function ChatroomController($log, chatroomService, $http, $state, $sce, authService, socket, $scope) {
+
     $log.info("chatroom controlla is in da house");
     var vm = this;
     vm.all = [];
+
+
 
     vm.authService = authService;
 
@@ -33,9 +36,18 @@
     $log.info("LOOK HERE:", vm.youtubeWF);
 
     function submitMessage() {
-      vm.messages.push(vm.message);
+      socket.emit('send message', vm.message);
       vm.message = "";
+
+      // vm.messages.push(vm.message);
+      // vm.message = "";
     };
+
+    socket.on('get message', function(data) {
+      vm.messages.push(data);
+      $scope.$digest();
+    })
+
 
     function joinChatroom(data, userId) {
       $log.info("trying to enter chatroom");
