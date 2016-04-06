@@ -16,16 +16,16 @@ function create(req, res, next) {
               video: req.body.video,
               description: req.body.description,
               userCapacity: req.body.userCapacity,
-              creator: userId,
-              creatorName: username,
-              // users: [userId]
+              // creator: userObject,
+              creatorName: username
             })
         .then(function(chatroom) {
-          console.log("WHAT IS userId:", userId);
-          console.log("User Object trying to push:", userObject);
-          console.log("The Chatroom:", chatroom);
+          // console.log("WHAT IS userId:", userId);
+          // console.log("User Object trying to push:", userObject);
+          // console.log("The Chatroom:", chatroom);
+          chatroom.creator = userObject;
           chatroom.users.push(userObject);
-          console.log("The Chatroom: pushed", chatroom);
+          // console.log("The Chatroom: pushed", chatroom);
           chatroom.save();
           console.log("The Chatroom: saved", chatroom);
 
@@ -38,7 +38,7 @@ function create(req, res, next) {
               description: chatroom.description,
               userCapacity: chatroom.userCapacity,
               id: chatroom._id,
-              creator: userId,
+              creator: userObject,
               creatorName: username
             }
           });
@@ -55,10 +55,12 @@ function create(req, res, next) {
 // };
 
 function getAll(req, res, next) {
-  Chatroom.find({}).populate("users").exec()
+  Chatroom.find({}).populate("users").populate("creator").exec()
     .then(function(chatrooms) {
       res.json(chatrooms);
   });
+
+
 };
 
 function show(req, res, next) {
