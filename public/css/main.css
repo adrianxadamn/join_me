@@ -32,6 +32,8 @@ a {
 .column2 {
   flex: 1;
   background-color: green;
+  min-width:350px;
+  max-height:750px;
 }
 
 .text-align {
@@ -41,3 +43,34 @@ a {
 .title {
   text-align: center;
 }
+
+.chat-box {
+  background-color: red;
+  height:540px;
+  margin: 0px 20px;
+}
+
+.chat-messages {
+  background-color: blue;
+  height:480px;
+}
+
+.chat-box-input {
+  background-color: orange;
+  height:80px;
+}
+
+.list-of-users {
+  background-color: yellow;
+  height: 100px;
+  margin: 0px 20px;
+}
+
+.edit-chatroom {
+  margin-left: 125px;
+}
+
+.number-of-users {
+  text-align: center;
+}
+
