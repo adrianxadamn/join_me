@@ -49,28 +49,23 @@
         function(err) {
           $log.info(err);
         })
-
-      // $http
-      //   .put('http://localhost:3000/api/chatrooms/' + chatroomId, data.users.push(userId))
-      //   .then(function(res) {
-      //     res.data.users.push(userId);
-      //     $log.info("chatroom data:", res.data);
-      //     chatroomService.store(res.data);
-
-
-      //   }, function(err) {
-      //     $log.info(err);
-      //   });
     };
 
-    function newChatroom() {
+    function newChatroom(userId) {
       $log.info("trying to create chatroom");
+      $log.info("current User Id:", userId);
       $log.info("current chatroom data trying to create:", vm.createChatroom);
 
       chatroomService
         .create(vm.createChatroom).then(
-          function() {
-            $log.info("YA DID IT")
+          function(response) {
+            $log.info("WHAT DID I GET BACK FROM RESPONSE:", response.data.data );
+
+            var chatroomData = response.data.data;
+            $log.info("YA DID IT");
+            $state.go('chatroom')
+            chatroomService.store(chatroomData);
+
           },
           function(err) {
             $log.info(err);

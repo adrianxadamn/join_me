@@ -16,7 +16,8 @@ function create(req, res, next) {
               description: req.body.description,
               userCapacity: req.body.userCapacity,
               creator: userId,
-              creatorName: username
+              creatorName: username,
+              users: [userId]
             })
         .then(function(chatroom) {
           console.log("WHAT IS userId:", userId)

@@ -38,14 +38,16 @@
       .then(
         function(res) {
           $log.info("successssss");
+          return res;
         }
       );
+      // $log.info("promise data:", promise.data);
       return promise;
     };
 
     function store(data) {
       $log.info("storing data:", data);
-      vm.chatroom.title = data.title
+      vm.chatroom.title = data.title;
       vm.chatroom.video = data.video;
       vm.chatroom.userCapacity = data.userCapacity;
       vm.chatroom.creatorName = data.creatorName;
