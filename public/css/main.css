@@ -52,7 +52,10 @@ a {
 
 .chat-messages {
   background-color: blue;
-  height:480px;
+  height:20px;
+  border: 1px solid black;
+  margin-bottom: 0px;
+  padding-left: 0px;
 }
 
 .chat-box-input {
@@ -85,4 +88,8 @@ a {
 
 .send-message {
   width:64px;
+}
+
+.messages {
+
 }

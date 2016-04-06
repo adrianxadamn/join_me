@@ -16,6 +16,11 @@
 
     vm.chatroomService = chatroomService;
 
+    vm.submitMessage = submitMessage;
+
+    vm.messages = [];
+    vm.message = "";
+
     vm.retrieveChatrooms = retrieveChatrooms;
     vm.newChatroom = newChatroom;
     vm.joinChatroom = joinChatroom;
@@ -26,6 +31,11 @@
       //Needs $sce.trustAsHtml to let the application render <iframe> tags
     vm.youtubeWF = $sce.trustAsHtml(`<iframe width="1000" height="500" src=${vm.youtubeSRC} frameborder="0" allowfullscreen></iframe>`);
     $log.info("LOOK HERE:", vm.youtubeWF);
+
+    function submitMessage() {
+      vm.messages.push(vm.message);
+      vm.message = "";
+    };
 
     function joinChatroom(data, userId) {
       $log.info("trying to enter chatroom");
