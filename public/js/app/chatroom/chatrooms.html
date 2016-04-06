@@ -1,5 +1,5 @@
 <h1>List of Public Chatrooms</h1>
-
+{{vm.authService.currentUser()._id}}
 <button class="btn navbar-btn btn-default" role="presentation"><a ui-sref="newChatroom">Create Chatroom</a></button>
 
    <div class="container">
@@ -15,7 +15,7 @@
               <p><b>OwnerUsername: {{chatroom.creatorName}}</b></p>
               <p>{{chatroom.description}}</p>
               <p><b>Number of Users:</b> {{chatroom.users.length}}/{{chatroom.userCapacity}}</p>
-              <a ng-click="vm.joinChatroom(chatroom._id)" class="btn btn-default">Join!</a>
+              <a ng-click="vm.joinChatroom(chatroom, vm.authService.currentUser()._id)" class="btn btn-default">Join!</a>
             </div>
           </div>
         </div>

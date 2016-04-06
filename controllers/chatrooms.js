@@ -67,8 +67,29 @@ function show(req, res, next) {
 };
 
 
+function update(req, res, next) {
+  var chatroomId = req.params.id;
+  console.log("YOOO chatroom Id:", chatroomId);
+  console.log("YOOO reqbody Id:", req.body);
+  User.findById(req.decoded._id).exec()
+    .then(function(user) {
+      var userId = user._id;
+      Chatroom.findById(chatroomId, function(err, chatroom) {
+        if (err) {
+          res.send(err);
+        }
+        chatroom.users.push(userId);
+        chatroom.save(function(err, response) {
+          console.log("successfully saved!", response);
+          res.json({success: "YASS"})
+        })
+      });
+    });
+};
+
 module.exports = {
   create: create,
   getAll: getAll,
-  show: show
+  show: show,
+  update: update
 }

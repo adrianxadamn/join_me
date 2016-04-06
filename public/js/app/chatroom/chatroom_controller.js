@@ -5,14 +5,14 @@
     .module("app")
     .controller("ChatroomController", ChatroomController);
 
-  ChatroomController.$inject = ["$log", "chatroomService", "$http", "$state", "$sce"];
+  ChatroomController.$inject = ["$log", "chatroomService", "$http", "$state", "$sce", "authService"];
 
-  function ChatroomController($log, chatroomService, $http, $state, $sce) {
+  function ChatroomController($log, chatroomService, $http, $state, $sce, authService) {
     $log.info("chatroom controlla is in da house");
     var vm = this;
     vm.all = [];
 
-
+    vm.authService = authService;
 
     vm.chatroomService = chatroomService;
 
@@ -27,29 +27,40 @@
     vm.youtubeWF = $sce.trustAsHtml(`<iframe width="1000" height="500" src=${vm.youtubeSRC} frameborder="0" allowfullscreen></iframe>`);
     $log.info("LOOK HERE:", vm.youtubeWF);
 
-    function joinChatroom(data) {
+    function joinChatroom(data, userId) {
       $log.info("trying to enter chatroom");
       $log.info("current chatroom data trying to join:", data);
-
+      $log.info("user id trying to join:", userId);
       $state.go('chatroom');
-      getChatroomData(data);
+      getChatroomData(data, userId);
     };
 
-    function getChatroomData(data) {
-      $log.info(data);
+    function getChatroomData(data, userId) {
 
-      $http
-        .get('http://localhost:3000/api/chatrooms/' + data)
-        .then(function(res) {
-          $log.info("chatroom data:", res);
-          chatroomService.store(res.data);
-          // vm.chatroom = res.data;
-          // $log.info("vm.chatroom title:", res.data.title);
-          // vm.chatroom.title = res.data.title;
-          // $log.info(vm.chatroom);
-        }, function(err) {
+      var saveChatroomData = data;
+      // $log.info(data, userId);
+      // var chatroomId = data._id;
+      // $log.info("chatroom id:", chatroomId);
+
+      chatroomService.update(data, userId).then(
+        function() {
+          chatroomService.store(saveChatroomData);
+        },
+        function(err) {
           $log.info(err);
-        });
+        })
+
+      // $http
+      //   .put('http://localhost:3000/api/chatrooms/' + chatroomId, data.users.push(userId))
+      //   .then(function(res) {
+      //     res.data.users.push(userId);
+      //     $log.info("chatroom data:", res.data);
+      //     chatroomService.store(res.data);
+
+
+      //   }, function(err) {
+      //     $log.info(err);
+      //   });
     };
 
     function newChatroom() {

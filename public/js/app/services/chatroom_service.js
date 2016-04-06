@@ -21,7 +21,8 @@
     var service = {
       create: create,
       store: store,
-      retrieve: retrieve
+      retrieve: retrieve,
+      update: update
     };
 
     return service;
@@ -52,6 +53,19 @@
       vm.chatroom.users = data.users;
       $log.info(vm.chatroom);
     }
+
+    function update(data, userId) {
+      var promise = $http({
+        method: 'PUT',
+        url: '/api/chatrooms/' + data._id,
+        data: { id:userId },
+        headers: {
+          // 'Authorization': 'Bearer ' + token.retrieve(),
+          'Content-Type':  'application/json'
+        }
+      });
+      return promise;
+    };
 
     function retrieve() {
 

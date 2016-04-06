@@ -18,6 +18,7 @@ router.get('/users/:id', usersController.show);
 router.post('/chatrooms', token.authenticate, chatroomsController.create);
 router.get('/chatrooms', chatroomsController.getAll);
 router.get('/chatrooms/:id', chatroomsController.show);
+router.put('/chatrooms/:id', token.authenticate, chatroomsController.update);
 
 router.post('/token',    token.create);
 
