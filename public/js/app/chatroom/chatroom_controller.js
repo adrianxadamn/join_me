@@ -12,6 +12,8 @@
     var vm = this;
     vm.all = [];
 
+
+
     vm.chatroomService = chatroomService;
 
     vm.retrieveChatrooms = retrieveChatrooms;

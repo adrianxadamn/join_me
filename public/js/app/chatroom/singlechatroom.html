@@ -8,12 +8,12 @@
 <!--     <p>Video Id: {{vm.chatroomService.retrieve().video}}</p> -->
   </div>
   <div class="column2">
-    <p class="number-of-users">Number of Users: {{vm.chatroomService.retrieve().userCapacity}}</p>
+    <p class="number-of-users">Number of Users: {{vm.chatroomService.retrieve().users.length}}/{{vm.chatroomService.retrieve().userCapacity}}</p>
     <div class="chat-box">
       <div class="chat-messages">Chat Text Messages Goes Here</div>
       <div class="chat-box-input">Chat Box Text Input</div>
     </div>
     <div class="list-of-users"> List of Users Goes Here </div>
-    <button class="edit-chatroom" type="submit" class="btn btn-default">Edit Chatroom</button>
+    <button ng-click"vm.modalUpdate()" class="edit-chatroom" type="submit" class="btn btn-default">Edit Chatroom</button>
   </div>
 </div>

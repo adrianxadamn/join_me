@@ -14,7 +14,7 @@
               <p><b>OwnerId: {{chatroom.creator}}</b> </p>
               <p><b>OwnerUsername: {{chatroom.creatorName}}</b></p>
               <p>{{chatroom.description}}</p>
-              <p><b>Number of Users:</b> 0/{{chatroom.userCapacity}}</p>
+              <p><b>Number of Users:</b> {{chatroom.users.length}}/{{chatroom.userCapacity}}</p>
               <a ng-click="vm.joinChatroom(chatroom._id)" class="btn btn-default">Join!</a>
             </div>
           </div>

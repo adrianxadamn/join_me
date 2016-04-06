@@ -49,6 +49,7 @@
       vm.chatroom.userCapacity = data.userCapacity;
       vm.chatroom.creatorName = data.creatorName;
       vm.chatroom.description = data.description;
+      vm.chatroom.users = data.users;
       $log.info(vm.chatroom);
     }
 

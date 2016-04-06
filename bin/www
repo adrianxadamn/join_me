@@ -4,7 +4,8 @@ var http  = require('http'),
     debug = require('debug')('app:http');
 
 var env = require('../config/environment'),
-    app = require('../server');
+    app = require('../server'),
+    io  = require('../io');
 
 // Get port from environment and store.
 var port = normalizePort(process.env.PORT || '3000');
@@ -12,6 +13,8 @@ app.set('port', port);
 
 // Create HTTP server.
 var server = http.createServer(app);
+// attach socket.io to http server
+io.attach(server);
 
 // Listen on provided port, on all network interfaces.
 server.listen(port);

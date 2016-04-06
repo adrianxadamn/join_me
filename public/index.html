@@ -7,8 +7,10 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-  <script src="/js/vendor/jwt-decode.2.0.1.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 
+  <script src="/js/vendor/jwt-decode.2.0.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
 </head>
@@ -25,11 +27,20 @@
     </div>
   </nav>
 
+  <body>
+    <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form>
+  </body>
+
+
 <!--   <div class="test">
   <h1> Welcome to joinMe </h1>
   </div> -->
   <main ui-view>
   </main>
+
 
   <script src="/js/app.module.js"></script>
   <script src="/js/app.httpInterceptors.js"></script>
@@ -45,5 +56,13 @@
   <script src="/js/app/services/user_service.js"></script>
   <script src="/js/app/services/auth_service.js"></script>
   <script src="/js/app/services/token_service.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // get our connection to the socket.io server
+      var socket = io();
+      console.log(socket);
+    });
+  </script>
 </body>
 </html>
