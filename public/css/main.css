@@ -13,10 +13,6 @@ a {
   color: #00B7FF;
 }
 
-.test {
-  color: blue;
-}
-
 .wrapper {
 /*  background-color: red;*/
   display: flex;
@@ -31,9 +27,9 @@ a {
 
 .column2 {
   flex: 1;
-  background-color: green;
   min-width:350px;
   max-height:750px;
+  margin-right:10px;
 }
 
 .text-align {
@@ -45,32 +41,35 @@ a {
 }
 
 .chat-box {
-  background-color: red;
   height:540px;
   margin: 0px 20px;
+  overflow: auto;
 }
 
 .chat-messages {
-  background-color: blue;
   height:20px;
   border: 1px solid black;
   margin-bottom: 0px;
   padding-left: 0px;
 }
 
+.chat-messages:nth-child(odd) {
+  background: #eee;
+}
+
 .chat-box-input {
-  background-color: orange;
-  height:80px;
+  height: 66px;
+  margin-left: 19px;
 }
 
 .list-of-users {
-  background-color: yellow;
-  height: 100px;
-  margin: 0px 20px;
+/*  height: 100px;*/
+  margin: 10px 20px 0px 20px;
 }
 
 .edit-chatroom {
   margin-left: 125px;
+  margin-top: 15px;
 }
 
 .number-of-users {
@@ -90,6 +89,18 @@ a {
   width:64px;
 }
 
-.messages {
+.user-info {
+  display:flex;
+/*  border-radius: 100px;*/
+}
 
+#yo {
+  width:120px;
+  font-size: 14px;
+  padding-top: 10px;
+}
+
+
+.box-shadow--16dp {
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)
 }

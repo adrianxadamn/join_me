@@ -7,30 +7,29 @@
     <p class="text-align">Description: {{vm.chatroomService.retrieve().description}}</p>
   </div>
 
-  <div class="column2">
-    <p class="number-of-users">Number of Users: {{(vm.chatroomService.retrieve().users.length) + 1}}/{{vm.chatroomService.retrieve().userCapacity}}</p>
-      <div class="chat-box">
-        <div ng-repeat="message in vm.messages track by $index">
-          <ul class="chat-messages">
-            {{message}}
+  <div class="column2 panel panel-default">
+    <p class="number-of-users panel-heading">Number of Users: {{(vm.chatroomService.retrieve().users.length) + 1}}/{{vm.chatroomService.retrieve().userCapacity}}</p>
+      <div class="chat-box panel panel-default">
+          <ul ng-repeat="message in vm.messages track by $index" class="chat-messages">
+            {{vm.authService.currentUser().name}}: {{message}}
           </ul>
-        </div>
       </div>
       <div class="chat-box-input">
         <form ng-submit="vm.submitMessage()" class="send" action="">
-          <textarea ng-model="vm.message" name="myTextArea"cols="32" rows="3"></textarea>
+          <textarea ng-model="vm.message" name="mytextarea"cols="32" rows="3"></textarea>
           <button type="submit" class="send-message">Send</button>
         </form>
       </div>
-      <div class="list-of-users">
-        List of Users Goes Here <br>
-        <button type="submit" class="btn btn-default">{{vm.authService.currentUser().name}}</button>
+      <div class="list-of-users panel panel-default">
+        <div class="user-info">
+          <img src="{{vm.authService.currentUser().picture_url}}" width="40" height="35">
+          <span id="yo" class="label label-warning">{{vm.authService.currentUser().name}}</span>
+        </div>
       </div>
 
 
       <button ng-click"vm.modalUpdate()" class="edit-chatroom" type="submit" class="btn btn-default">Edit Chatroom</button>
   </div>
 </div>
-
 
 

@@ -8,7 +8,7 @@
   socketService.$inject = [];
 
   function socketService() {
-    var socket = io.connect('https://agile-cove-29324.herokuapp.com/');
+    var socket = io.connect('http://localhost:3000');
 
     return socket;
   }
