@@ -16,20 +16,28 @@
     vm.toggleSignInForm = toggleSignInForm;
     vm.toggleValue = true;
 
+    vm.conflict = false;
+    vm.conflict2 = false;
+    vm.conflict3 = false;
 
     function submitLogIn() {
-      $log.info("Loggin in:", vm.currentLogInInfo);
+      if (vm.currentLogInInfo === undefined ) {
+        vm.conflict3 = true;
+      } else {
+        $log.info("Loggin in:", vm.currentLogInInfo);
 
-      authService
-        .logIn(vm.currentLogInInfo)
-        .then(
-          function(decodedToken) {
-            $state.go("home");
-          },
-          function(err) {
-            $log.info("err:", err);
-          }
-        );
+        authService
+          .logIn(vm.currentLogInInfo)
+          .then(
+            function(decodedToken) {
+              $state.go("home");
+            },
+            function(err) {
+              $log.info("err:", err);
+            }
+          );
+
+      }
     };
 
     //creates a new User into the database
@@ -43,7 +51,13 @@
             $state.go("home");
           },
           function(err) {
-            $log.info(err);
+            if (err.status === 409) {
+              vm.conflict = true;
+              $log.info(err);
+            } else if (err.status == 422 || err.status === 400) {
+              vm.conflict2 = true;
+              $log.info(err);
+            }
           }
         );
     };

@@ -11,7 +11,9 @@
     $stateProvider
       .state("home", {
         url: "/",
-        templateUrl: "/js/app/layouts/home.html"
+        templateUrl: "/js/app/layouts/home.html",
+        controller: "CarouselDemoCtrl",
+        controllerAs: "vm"
       })
       .state("signin", {
         url: "/signin",
@@ -41,7 +43,8 @@
         url: "/newChatroom",
         templateUrl: "/js/app/chatroom/new_chatroom.html",
         controller: "ChatroomController",
-        controllerAs: "vm"
+        controllerAs: "vm",
+        authorized: true
       });
 
 

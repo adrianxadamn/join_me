@@ -50,11 +50,16 @@
 
 
     function joinChatroom(data, userId) {
-      $log.info("trying to enter chatroom");
-      $log.info("current chatroom data trying to join:", data);
-      $log.info("user id trying to join:", userId);
-      $state.go('chatroom');
-      getChatroomData(data, userId);
+      if (data.users.length >= data.userCapacity ) {
+        alert("chatroom is full");
+      } else {
+        $log.info("trying to enter chatroom");
+        $log.info("current chatroom data trying to join:", data);
+        $log.info("user id trying to join:", userId);
+        $state.go('chatroom');
+        getChatroomData(data, userId);
+      };
+
     };
 
     function getChatroomData(data, userId) {

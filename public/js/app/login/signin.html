@@ -1,7 +1,7 @@
 
 <div class="forms" ng-show="vm.toggleValue">
   <h1 id="header">Sign In</h1>
-    <form ng-submit="vm.submitLogIn()">
+    <form ng-submit="vm.submitLogIn()" name="signInForm" novalidate>
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input ng-model="vm.currentLogInInfo.email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
@@ -10,8 +10,9 @@
         <label for="exampleInputPassword1">Password</label>
         <input ng-model="vm.currentLogInInfo.password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
       </div>
-
-      <button type="submit" class="btn btn-default">Submit</button>
+      <small ng-show="vm.conflict3" class="text-danger"><em>Please Fill in Sign In Form!</em></small>
+      <br>
+      <button type="submit" ng-disabled="signInForm.$invalid" class="btn btn-default">Submit</button>
     </form>
 
     <div>
@@ -25,10 +26,11 @@
 
 <div class="forms" ng-hide="vm.toggleValue">
   <h1 id="header">Sign Up</h1>
-    <form ng-submit="vm.signUp()">
+    <form ng-submit="vm.signUp()" name="signUpForm" novalidate>
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input ng-model="vm.createUser.email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+        <small ng-show="vm.conflict" class="text-danger"><em>Email exists...</em></small>
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Username</label>
@@ -47,7 +49,9 @@
         <input ng-model="vm.createUser.picture_url" type="text" class="form-control" id="exampleInputProfileUrl" placeholder="https://">
       </div>
 
-      <button type="submit" class="btn btn-default">Submit</button>
+      <small ng-show="vm.conflict2" class="text-danger"><em>Please Complete Form!</em></small>
+      <br>
+      <button type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-default">Submit</button>
     </form>
 
   <div>

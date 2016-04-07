@@ -8,9 +8,9 @@ var chatroomSchema = new mongoose.Schema({
                       ref: "User"
                     },
   creatorName:      { type: String },
-  video:            { type: String },
+  video:            { type: String, required: true },
   description:      { type: String },
-  userCapacity:     { type: Number },
+  userCapacity:     { type: Number, default: 4 },
   users:            [{
                       type: mongoose.Schema.Types.ObjectId,
                       ref: "User"

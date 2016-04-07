@@ -1,1 +1,13 @@
 <h1> Welcome. this is the home layout page </h1>
+
+
+
+ <div id="carousel">
+  <carousel interval="myInterval">
+    <slide ng-repeat="slide in slides" active="slide.active">
+      <img ng-src="{{slide.image}}">
+      <div class="carousel-caption">
+      </div>
+    </slide>
+  </carousel>
+</div>

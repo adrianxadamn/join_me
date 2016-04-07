@@ -100,7 +100,25 @@ a {
   padding-top: 10px;
 }
 
-
-.box-shadow--16dp {
-    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)
+#carousel {
+  margin-left: 350px;
+  margin-right: 350px;
 }
+#slides_control > div{
+  height: 200px;
+}
+img {
+  margin:auto;
+  width: 800px;
+}
+#slides_control {
+  position:absolute;
+  width: 400px;
+  left:50%;
+  top:20px;
+ margin-left:-200px;
+}
+
+/*.box-shadow--16dp {
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2)
+}*/
