@@ -45,7 +45,7 @@
 
     socket.on('get message', function(data) {
       vm.messages.push(data);
-      $scope.$digest();
+      $scope.$apply();
     });
 
 
