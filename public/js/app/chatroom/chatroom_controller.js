@@ -12,7 +12,6 @@
     $log.info("chatroom controlla is in da house");
     var vm = this;
     vm.all = [];
-
     vm.authService = authService;
 
     vm.chatroomService = chatroomService;
@@ -22,30 +21,59 @@
     vm.messages = [];
     vm.message = "";
 
+    vm.movies = [];
+    vm.movie = "";
+
+    vm.videoHide = false;
+
+    var autoplay = "?autoplay=1"
+
     vm.retrieveChatrooms = retrieveChatrooms;
     vm.newChatroom = newChatroom;
     vm.joinChatroom = joinChatroom;
     vm.editChatroom = editChatroom;
 
+    vm.getYouTube = function() {
+      $log.info("trying to start video");
+      var src = chatroomService.retrieve().video;
+      $log.info("src:", src);
+      var sce = $sce.trustAsHtml('<iframe width="1000" height="500" src="https://www.youtube.com/embed/' + src + autoplay + '" frameborder="0" allowfullscreen></iframe>');
+      $log.info("sce:", sce.$$unwrapTrustedValue());
+      return sce;
+    };
+
+
     //youtube source
-    vm.youtubeSRC = `https://www.youtube.com/embed/${vm.chatroomService.retrieve().video}`
+    // vm.youtubeSRC = `https://www.youtube.com/embed/${vm.chatroomService.retrieve().video}`
     //youtube wireframe to be render onto single chatroom page
       //Needs $sce.trustAsHtml to let the application render <iframe> tags
-    vm.youtubeWF = $sce.trustAsHtml(`<iframe width="1000" height="500" src="${vm.youtubeSRC}" frameborder="0" allowfullscreen></iframe>`);
     $log.info("LOOK HERE:", vm.youtubeWF);
 
     function submitMessage() {
       socket.emit('send message', vm.message);
       vm.message = "";
-
-      // vm.messages.push(vm.message);
-      // vm.message = "";
     };
 
     socket.on('get message', function(data) {
-      vm.messages.push(data);
-      $scope.$apply();
+      console.log('get message');
+      $scope.$apply(function() {
+        vm.messages.push(data);
+        vm.videoHide = true;
+      });
     });
+
+    vm.submitVideo = function() {
+      socket.emit('send movie', vm.movie);
+      vm.movie = "";
+    };
+
+    socket.on('get movie', function(data) {
+      console.log('get movie');
+      $scope.$apply(function() {
+        vm.movies.push("yo");
+        vm.videoHide = true;
+      })
+    })
 
     function editChatroom(data, chatroomId) {
       $log.info("hi")
@@ -113,7 +141,7 @@
     function retrieveChatrooms() {
       $log.info("chatroom!!!", vm.chatroom)
       $http
-        .get('http://localhost:3000/api/chatrooms')
+        .get('/api/chatrooms')
         .then(function(res) {
           $log.info("list of chatrooms", res);
           vm.all = res.data;

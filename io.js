@@ -7,6 +7,10 @@ io.on('connection', function (socket) {
     io.sockets.emit('get message', data)
   })
 
+  socket.on('send movie', function(data) {
+    io.sockets.emit('get movie', data)
+  })
+
 });
 
 

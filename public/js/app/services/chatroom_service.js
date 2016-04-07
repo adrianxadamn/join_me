@@ -9,8 +9,7 @@
 
   function chatroomService($log, $http) {
     $log.info("chatroom service is in da house");
-    var vm = this;
-    vm.chatroom = {
+    var chatroom = {
       title: "",
       video: "",
       description: "",
@@ -49,21 +48,21 @@
 
     function store(data) {
       $log.info("storing data:", data);
-      vm.chatroom.title = data.title;
-      vm.chatroom.video = data.video;
-      vm.chatroom.userCapacity = data.userCapacity;
-      vm.chatroom.creatorName = data.creatorName;
-      vm.chatroom.description = data.description;
-      vm.chatroom.users = data.users;
-      vm.chatroom._id = data._id;
-      $log.info(vm.chatroom);
+      chatroom.title = data.title;
+      chatroom.video = data.video;
+      chatroom.userCapacity = data.userCapacity;
+      chatroom.creatorName = data.creatorName;
+      chatroom.description = data.description;
+      chatroom.users = data.users;
+      chatroom._id = data._id;
+      $log.info(chatroom);
     }
 
     function storeNewData(data) {
-      vm.chatroom.title = data.title;
-      vm.chatroom.video = data.video;
-      vm.chatroom.userCapacity = data.userCapacity;
-      vm.chatroom.description = data.description;
+      chatroom.title = data.title;
+      chatroom.video = data.video;
+      chatroom.userCapacity = data.userCapacity;
+      chatroom.description = data.description;
     }
 
     function update(data, userId) {
@@ -93,7 +92,7 @@
 
     function retrieve() {
 
-      return vm.chatroom;
+      return chatroom;
     }
 
   };

@@ -8,7 +8,7 @@
   socketService.$inject = [];
 
   function socketService() {
-    var socket = io.connect('http://localhost:3000');
+    var socket = io();
 
     return socket;
   }
