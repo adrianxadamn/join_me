@@ -22,7 +22,9 @@
       create: create,
       store: store,
       retrieve: retrieve,
-      update: update
+      update: update,
+      storeNewData: storeNewData,
+      updateChatroom: updateChatroom
     };
 
     return service;
@@ -53,17 +55,37 @@
       vm.chatroom.creatorName = data.creatorName;
       vm.chatroom.description = data.description;
       vm.chatroom.users = data.users;
+      vm.chatroom._id = data._id;
       $log.info(vm.chatroom);
+    }
+
+    function storeNewData(data) {
+      vm.chatroom.title = data.title;
+      vm.chatroom.video = data.video;
+      vm.chatroom.userCapacity = data.userCapacity;
+      vm.chatroom.description = data.description;
     }
 
     function update(data, userId) {
       var promise = $http({
-        method: 'PUT',
+        method: 'PATCH',
         url: '/api/chatrooms/' + data._id,
         data: { id:userId },
         headers: {
           // 'Authorization': 'Bearer ' + token.retrieve(),
           'Content-Type':  'application/json'
+        }
+      });
+      return promise;
+    };
+
+    function updateChatroom(data, chatroomId) {
+      var promise = $http({
+        method: "PUT",
+        url: '/api/chatrooms/' + chatroomId,
+        data: data,
+        headers: {
+          'Content-Type': 'application/json'
         }
       });
       return promise;

@@ -13,8 +13,6 @@
     var vm = this;
     vm.all = [];
 
-
-
     vm.authService = authService;
 
     vm.chatroomService = chatroomService;
@@ -27,12 +25,13 @@
     vm.retrieveChatrooms = retrieveChatrooms;
     vm.newChatroom = newChatroom;
     vm.joinChatroom = joinChatroom;
+    vm.editChatroom = editChatroom;
 
     //youtube source
     vm.youtubeSRC = `https://www.youtube.com/embed/${vm.chatroomService.retrieve().video}`
     //youtube wireframe to be render onto single chatroom page
       //Needs $sce.trustAsHtml to let the application render <iframe> tags
-    vm.youtubeWF = $sce.trustAsHtml(`<iframe width="1000" height="500" src=${vm.youtubeSRC} frameborder="0" allowfullscreen></iframe>`);
+    vm.youtubeWF = $sce.trustAsHtml(`<iframe width="1000" height="500" src="${vm.youtubeSRC}" frameborder="0" allowfullscreen></iframe>`);
     $log.info("LOOK HERE:", vm.youtubeWF);
 
     function submitMessage() {
@@ -47,6 +46,17 @@
       vm.messages.push(data);
       $scope.$apply();
     });
+
+    function editChatroom(data, chatroomId) {
+      $log.info("hi")
+      chatroomService.updateChatroom(data, chatroomId).then(
+        function() {
+          chatroomService.storeNewData(data);
+        },
+        function(err) {
+          $log.info(err);
+        })
+    };
 
 
     function joinChatroom(data, userId) {

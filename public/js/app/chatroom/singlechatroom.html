@@ -1,7 +1,7 @@
 
 <div class="wrapper">
   <div class="column1">
-    <h1 class="title">Title: {{vm.chatroomService.retrieve().title}}</h1>
+    <h1 id="{{vm.chatroomService.retrieve()._id}}" class="title">Title: {{vm.chatroomService.retrieve().title}}</h1>
     <div class="text-align" ng-bind-html="vm.youtubeWF"></div>
     <h3 class="text-align">Owner: {{vm.chatroomService.retrieve().creatorName}}</h3>
     <p class="text-align">Description: {{vm.chatroomService.retrieve().description}}</p>
@@ -30,6 +30,31 @@
 
       <button ng-click"vm.modalUpdate()" class="edit-chatroom" type="submit" class="btn btn-default">Edit Chatroom</button>
   </div>
+</div>
+
+<div class="forms">
+  <h1 id="header">Edit Chatroom</h1>
+    <form ng-submit="vm.editChatroom(vm.newChatroomInfo, vm.chatroomService.retrieve()._id)">
+      <div class="form-group">
+        <label for="exampleInputTitle">Title</label>
+        <input ng-model="vm.newChatroomInfo.title" type="text" class="form-control" id="exampleInputTitle" placeholder="Title">
+      </div>
+      <div class="form-group">
+        <label for="video">Video</label>
+        <input ng-model="vm.newChatroomInfo.video" type="text" class="form-control" id="video" placeholder="Post Youtube ID of Video Ex. KY5Ug1OW5O4">
+      </div>
+      <div class="form-group">
+        <label for="description">Chatroom Description</label>
+        <input ng-model="vm.newChatroomInfo.description" type="text" class="form-control" id="description" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <label for="userCapacity">Number of Users</label>
+        <input ng-model="vm.newChatroomInfo.userCapacity" type="number" class="form-control" id="userCapacity" placeholder="Number of Users">
+      </div>
+
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+
 </div>
 
 

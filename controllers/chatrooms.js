@@ -97,9 +97,15 @@ function update(req, res, next) {
     });
 };
 
+function updateChatroom(res, res, next) {
+  console.log(req.body);
+};
+
 module.exports = {
   create: create,
   getAll: getAll,
   show: show,
-  update: update
+  update: update,
+  updateChatroom: updateChatroom
+
 }
