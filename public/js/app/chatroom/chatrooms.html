@@ -9,7 +9,7 @@
         <div ng-repeat="chatroom in vm.all" class="col-md-4">
           <h3 id="{{chatroom._id}}">{{chatroom.title}}</h3>
           <div class="thumbnail">
-            <img src="http://img.youtube.com/vi/{{chatroom.video}}/0.jpg" width="350" height="300">
+            <img ng-src="http://img.youtube.com/vi/{{chatroom.video}}/0.jpg" width="350" height="300">
             <div class="caption">
 <!--               <p><b>OwnerId: {{chatroom.creator._id}}</b> </p> -->
               <p><b>OwnerUsername: {{chatroom.creatorName}}</b></p>
