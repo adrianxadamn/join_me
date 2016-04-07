@@ -14,6 +14,14 @@ if (!env.MLAB_URI) {
   });
 }
 
+mongoose.connection.on('open', function() {
+  console.log('successfully connected to mongodb');
+});
+
+mongoose.connection.on('error', function(err) {
+  console.log('error while connecting to mongodb: ' + err);
+});
+
 if (!mongoose.connection._hasOpened) {
   mongoose.connect(dbUri);
 }
