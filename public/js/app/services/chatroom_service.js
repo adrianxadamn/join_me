@@ -69,7 +69,7 @@
       var promise = $http({
         method: 'PATCH',
         url: '/api/chatrooms/' + data._id,
-        data: { id:userId },
+        data: data ,
         headers: {
           // 'Authorization': 'Bearer ' + token.retrieve(),
           'Content-Type':  'application/json'
@@ -80,7 +80,7 @@
 
     function updateChatroom(data, chatroomId) {
       var promise = $http({
-        method: "PUT",
+        method: "PATCH",
         url: '/api/chatrooms/' + chatroomId,
         data: data,
         headers: {

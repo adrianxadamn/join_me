@@ -11,13 +11,13 @@
 
     $log.info("chatroom controlla is in da house");
     var vm = this;
+
     vm.all = [];
     vm.authService = authService;
-
     vm.chatroomService = chatroomService;
 
-    vm.submitMessage = submitMessage;
-
+    vm.users = [];
+    vm.editToggle = false;
     vm.messages = [];
     vm.message = "";
 
@@ -26,12 +26,16 @@
 
     vm.videoHide = false;
 
-    var autoplay = "?autoplay=1"
+    var autoplay = "?autoplay=1";
 
-    vm.retrieveChatrooms = retrieveChatrooms;
-    vm.newChatroom = newChatroom;
-    vm.joinChatroom = joinChatroom;
-    vm.editChatroom = editChatroom;
+    vm.modalUpdate = function() {
+      $log.info("works");
+      vm.editToggle = true;
+    };
+
+    vm.closeModal = function() {
+      vm.editToggle = false;
+    }
 
     vm.getYouTube = function() {
       $log.info("trying to start video");
@@ -42,14 +46,13 @@
       return sce;
     };
 
-
     //youtube source
     // vm.youtubeSRC = `https://www.youtube.com/embed/${vm.chatroomService.retrieve().video}`
     //youtube wireframe to be render onto single chatroom page
       //Needs $sce.trustAsHtml to let the application render <iframe> tags
     $log.info("LOOK HERE:", vm.youtubeWF);
 
-    function submitMessage() {
+    vm.submitMessage = function() {
       socket.emit('send message', vm.message);
       vm.message = "";
     };
@@ -73,9 +76,11 @@
         vm.movies.push("yo");
         vm.videoHide = true;
       })
-    })
+    });
 
-    function editChatroom(data, chatroomId) {
+    socket.emit('register-user', {usernames: vm.authService.currentUser().name})
+
+    vm.editChatroom = function(data, chatroomId) {
       $log.info("hi")
       chatroomService.updateChatroom(data, chatroomId).then(
         function() {
@@ -86,8 +91,7 @@
         })
     };
 
-
-    function joinChatroom(data, userId) {
+    vm.joinChatroom = function(data, userId) {
       if (data.users.length >= data.userCapacity ) {
         alert("chatroom is full");
       } else {
@@ -96,6 +100,7 @@
         $log.info("user id trying to join:", userId);
         $state.go('chatroom');
         getChatroomData(data, userId);
+        retrieveChatroom(data);
       };
 
     };
@@ -116,7 +121,7 @@
         })
     };
 
-    function newChatroom(userId) {
+    vm.newChatroom = function(userId) {
       $log.info("trying to create chatroom");
       $log.info("current User Id:", userId);
       $log.info("current chatroom data trying to create:", vm.createChatroom);
@@ -138,6 +143,19 @@
         );
     };
 
+    function retrieveChatroom(data) {
+      // $log.info("RETRIEVING THE chatroom data:", data);
+      $http
+        .get('/api/chatrooms/' + data._id)
+        .then(function(res) {
+          // $log.info("list of users in chatrooms", res.data.users);
+          vm.users = res.data.users;
+          // $log.info(vm.users);
+        }, function(err) {
+          $log.info(err);
+        });
+    };
+
     function retrieveChatrooms() {
       $log.info("chatroom!!!", vm.chatroom)
       $http
@@ -149,7 +167,7 @@
         }, function(err) {
           $log.info(err);
         });
-    }
+    };
     retrieveChatrooms();
 
 

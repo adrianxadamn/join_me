@@ -88,6 +88,13 @@ function update(req, res, next) {
         if (err) {
           res.send(err);
         }
+
+        console.log("THIS IS THE CURRENT CHATROOM:", chatroom);
+        if (chatroom.title != req.body.title) chatroom.title = req.body.title;
+        if (chatroom.video != req.body.video) chatroom.video = req.body.video;
+        if (chatroom.description != req.body.description) chatroom.description = req.body.description;
+        if (chatroom.userCapacity != req.body.userCapacity) chatroom.userCapacity = req.body.userCapacity;
+        //change the below code later if user object id is already in array
         chatroom.users.push(userObject);
         chatroom.save(function(err, response) {
           console.log("successfully saved!", response);
@@ -98,7 +105,16 @@ function update(req, res, next) {
 };
 
 function updateChatroom(res, res, next) {
+  var chatroomId = req.params.id;
+  console.log(chatroomId);
   console.log(req.body);
+  Chatroom.findById(chatroomId, function(err, chatroom) {
+    if (err) {
+      res.send(err);
+    }
+    res.json(chatroom);
+  })
+
 };
 
 module.exports = {
