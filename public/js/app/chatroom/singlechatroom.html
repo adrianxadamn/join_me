@@ -8,7 +8,7 @@
     <h3 class="text-align">Owner: {{vm.chatroomService.retrieve().creatorName}}</h3>
     <p class="text-align">Description: {{vm.chatroomService.retrieve().description}}</p>
     <div ng-hide="vm.videoHide">
-      <button ng-click="vm.submitVideo()" type="submit" class="btn btn-default"> Start Video!</button>
+      <button ng-click="vm.submitVideo()" ng-show="(vm.chatroomService.retrieve().creatorName === vm.authService.currentUser().name)" type="submit" class="btn btn-default"> Start Video!</button>
     </div>
   </div>
 
