@@ -10,17 +10,16 @@
         <label for="exampleInputPassword1">Password</label>
         <input ng-model="vm.currentLogInInfo.password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
       </div>
-      <small ng-show="vm.conflict3" class="text-danger"><em>Please Fill in Sign In Form!</em></small>
-      <br>
-      <button type="submit" ng-disabled="signInForm.$invalid" class="btn btn-default">Submit</button>
+      <div class="align-buttons2">
+        <small ng-show="vm.conflict3" class="text-danger"><em>Please Fill in Sign In Form!</em></small>
+        <br>
+        <button type="submit" ng-disabled="signInForm.$invalid" class="btn btn-default">Submit</button>
+        <p id="move-left">
+          <strong> Don't have an account?
+            <a ng-click="vm.toggleSignInForm()"><u>Sign Up</u></a> here.
+          </strong>
+      </div>
     </form>
-
-    <div>
-      <p> Don't have an account?
-      <a ng-click="vm.toggleSignInForm()"><u>Sign Up</u></a>
-      , here.
-
-    </div>
 </div>
 
 
@@ -49,18 +48,16 @@
         <input ng-model="vm.createUser.picture_url" type="text" class="form-control" id="exampleInputProfileUrl" placeholder="https://">
       </div>
 
-      <small ng-show="vm.conflict2" class="text-danger"><em>Please Complete Form!</em></small>
-      <br>
-      <button type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-default">Submit</button>
+      <div class="align-buttons">
+        <small ng-show="vm.conflict2" class="text-danger"><em>Please Complete Form!</em></small>
+        <br>
+        <button id="sign-up-button" type="submit" ng-disabled="signUpForm.$invalid" class="btn btn-default">Submit</button>
+        <p>
+          <strong>
+            If you are a user,
+            <a ng-click="vm.toggleSignInForm()">Sign In</a>.
+          </strong>
+        </p>
+      </div>
     </form>
-
-  <div>
-    <p>
-      <strong>
-        If you are a user,
-        <a ng-click="vm.toggleSignInForm()">Sign In</a>.
-      </strong>
-    </p>
-  </div>
-
 </div>
