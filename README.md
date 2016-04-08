@@ -1,5 +1,7 @@
-# join_me
+#JoinMe
 
-:tada:
+##Wireframes
 
-Enjoy… 
+![](./public/assets/readme1.png)
+![](./public/assets/readme2.png)
+![](./public/assets/readme3.png)
