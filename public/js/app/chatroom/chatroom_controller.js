@@ -58,7 +58,7 @@
     };
 
     socket.on('get message', function(data) {
-      console.log('get message');
+      console.log('get message:', data);
       $scope.$apply(function() {
         vm.messages.push(data);
         vm.videoHide = true;
@@ -71,7 +71,7 @@
     };
 
     socket.on('get movie', function(data) {
-      console.log('get movie');
+      console.log('get movie:', data);
       $scope.$apply(function() {
         vm.movies.push("yo");
         vm.videoHide = true;
@@ -79,6 +79,14 @@
     });
 
     socket.emit('register-user', {usernames: vm.authService.currentUser().name})
+
+    socket.on('update-user-list', function(data) {
+      console.log('update-user-list:', data);
+      $scope.$apply(function() {
+        vm.users = data;
+        console.log("vm.users:", vm.users);
+      })
+    });
 
     vm.editChatroom = function(data, chatroomId) {
       $log.info("hi")
