@@ -28,6 +28,12 @@
 
     var autoplay = "?autoplay=1";
 
+    vm.leaveChatroom = function() {
+      $log.info("works");
+      $state.go('home');
+      socket.emit('remove-user', {usernames: vm.authService.currentUser()});
+    }
+
     vm.modalUpdate = function() {
       $log.info("works");
       vm.editToggle = true;
@@ -78,7 +84,7 @@
       })
     });
 
-    socket.emit('register-user', {usernames: vm.authService.currentUser()})
+    // socket.emit('register-user', {usernames: vm.authService.currentUser()})
 
     socket.on('update-user-list', function(data) {
       console.log('update-user-list:', data);
@@ -109,6 +115,7 @@
         $state.go('chatroom');
         getChatroomData(data, userId);
         retrieveChatroom(data);
+            socket.emit('register-user', {usernames: vm.authService.currentUser()})
       };
 
     };

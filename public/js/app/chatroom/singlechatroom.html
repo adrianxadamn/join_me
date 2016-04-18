@@ -23,7 +23,7 @@
       <div class="chat-box-input">
         <form ng-submit="vm.submitMessage()" class="send" action="">
           <textarea ng-model="vm.message" name="mytextarea" cols="32" rows="3"></textarea>
-          <button type="submit" class="send-message">Send</button>
+          <button type="click" class="send-message">Send</button>
         </form>
       </div>
       <div class="list-of-users panel panel-default">
@@ -33,9 +33,11 @@
           <ul ng-repeat="user in vm.users">
             <img src="{{user.picture_url}}" width="40" height="35">
             <span id="yo" class="label label-warning">{{user.name}}</span>
+            <span class="label label-danger">X</span>
           </ul>
         </div>
       </div>
+      <button ng-click="vm.leaveChatroom()" type="submit" class="btn btn-default">Leave Chatroom</button>
       <div ng-show="(vm.chatroomService.retrieve().creatorName === vm.authService.currentUser().name)">
       <button ng-click="vm.modalUpdate()" class="edit-chatroom" type="submit" class="btn btn-default">Edit Chatroom</button>
       </div>

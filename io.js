@@ -16,22 +16,36 @@ io.on('connection', function (socket) {
     );
   });
 
-  socket.on('disconnect', function(data) {
+  socket.on('remove-user', function(data) {
     console.log("removing user:", data);
     console.log("socket.usernames:", socket.usernames);
 
+    // if (users.length >= 1) {
+    //   for (var i = 0; i < users.length; i++) {
+    //     if (socket.usernames.name === users[i].name) {
+    //       users.splice(i, 1);
+    //       console.log("users left:", users);
+    //       // delete users[socket.usernames];
+    //       io.sockets.emit('update-user-list',
+    //                        users
+    //       );
+    //     }
+    //   }
+    // }
+
     if (users.length >= 1) {
       for (var i = 0; i < users.length; i++) {
-        if (socket.usernames.name === users[i].name) {
+        if (data.usernames.name === users[i].name) {
           users.splice(i, 1);
+          console.log("users left:", users);
+          // delete users[socket.usernames];
+          io.sockets.emit('update-user-list',
+                           users
+          );
         }
       }
     }
 
-    // delete users[socket.usernames];
-    io.sockets.emit('update-user-list',
-                     users
-    );
   });
 
   console.log('Client connected to socket.io!');
