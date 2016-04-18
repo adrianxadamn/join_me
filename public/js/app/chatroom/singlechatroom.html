@@ -28,10 +28,11 @@
       </div>
       <div class="list-of-users panel panel-default">
         <div class="user-info">
-          <img src="{{vm.authService.currentUser().picture_url}}" width="40" height="35">
-          <span id="yo" class="label label-warning">{{vm.authService.currentUser().name}}</span>
-          <ul ng-repeat="user in vm.users" class="chat-messages">
-            {{user}}
+<!--           <img src="{{vm.authService.currentUser().picture_url}}" width="40" height="35">
+          <span id="yo" class="label label-warning">{{vm.authService.currentUser().name}}</span> -->
+          <ul ng-repeat="user in vm.users">
+            <img src="{{user.picture_url}}" width="40" height="35">
+            <span id="yo" class="label label-warning">{{user.name}}</span>
           </ul>
         </div>
       </div>

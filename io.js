@@ -1,15 +1,18 @@
 io = require('socket.io')();
 
-var users = {};
+var users = [];
 
 io.on('connection', function (socket) {
 
   socket.on('register-user', function(data) {
-    console.log("YOO from the io.js. console.logging data of reg. user:", data)
-    users[data.usernames] = true;
+    console.log("YOO from the io.js. console.logging data of reg. user:", data);
+    console.log('data.usernames:', data.usernames);
+    users.push(data.usernames);
     socket.usernames = data.usernames;
+    console.log("socket.usernames:", socket.usernames);
+    console.log("users:", users);
     io.sockets.emit('update-user-list',
-                     Object.keys(users)
+                     users
     );
   });
 
@@ -17,9 +20,17 @@ io.on('connection', function (socket) {
     console.log("removing user:", data);
     console.log("socket.usernames:", socket.usernames);
 
-    delete users[socket.usernames];
+    if (users.length >= 1) {
+      for (var i = 0; i < users.length; i++) {
+        if (socket.usernames.name === users[i].name) {
+          users.splice(i, 1);
+        }
+      }
+    }
+
+    // delete users[socket.usernames];
     io.sockets.emit('update-user-list',
-                     Object.keys(users)
+                     users
     );
   });
 

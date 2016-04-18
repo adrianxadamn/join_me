@@ -78,7 +78,7 @@
       })
     });
 
-    socket.emit('register-user', {usernames: vm.authService.currentUser().name})
+    socket.emit('register-user', {usernames: vm.authService.currentUser()})
 
     socket.on('update-user-list', function(data) {
       console.log('update-user-list:', data);
