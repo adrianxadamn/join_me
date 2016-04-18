@@ -6,6 +6,7 @@
   <title>joinMe</title>
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'>
 
   <script src="/socket.io/socket.io.js"></script>
 
@@ -24,6 +25,7 @@
         <button class="btn navbar-btn btn-default" role="presentation"><a ui-sref="chatroom_list">Chatrooms</a></button>
         <button ng-hide="vm.authService.isLoggedIn()" type="button" class="btn navbar-btn btn-default navbar-right" aria-label="Left Align"><a ui-sref="signin">Sign In</a></button>
         <button ng-show="vm.authService.isLoggedIn()" ng-click="vm.authService.logout()" type="button" class="btn navbar-btn btn-default navbar-right" aria-label="Left Align"><a ui-sref="home">Sign Out</a></button>
+        <img align="middle" id="logo" src="./images/joinme.png" width="150px" height="60px">
       </div>
     </div>
   </nav>

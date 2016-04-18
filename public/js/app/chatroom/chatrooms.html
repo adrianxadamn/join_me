@@ -1,4 +1,4 @@
-<h1>List of Public Chatrooms</h1>
+<h1 id="font-family">Public Chatrooms</h1>
 <!-- {{vm.authService.currentUser()._id}} -->
 <div class="title">
   <button id="what" class="btn navbar-btn btn-default" role="presentation"><a ui-sref="newChatroom">Create Chatroom</a></button>
@@ -8,7 +8,7 @@
       <div class="row">
 
         <div ng-repeat="chatroom in vm.all" class="col-md-4">
-          <h3 id="{{chatroom._id}}">{{chatroom.title}}</h3>
+          <h3 id="font-family" class="title">{{chatroom.title}}</h3>
           <div class="thumbnail">
             <img ng-src="http://img.youtube.com/vi/{{chatroom.video}}/0.jpg" width="350" height="300">
             <div class="caption">

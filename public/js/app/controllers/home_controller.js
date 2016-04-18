@@ -11,10 +11,10 @@
     $scope.myInterval = 3000;
     $scope.slides = [
       {
-        image: 'https://i153.photobucket.com/albums/s236/beebopn/a4366cc0-fac1-485c-abfa-948e8fedf7ab_zpsfj6ziqaw.png'
+        image: 'https://i153.photobucket.com/albums/s236/beebopn/joinme_zpsdj3wuxbm.png'
       },
       {
-        image: 'http://ct.fra.bz/ol/fz/sw/i56/5/4/13/frabz-Join-me-and-we-shall-rule-the-galaxy-2bff51.jpg'
+        image: 'https://i153.photobucket.com/albums/s236/beebopn/89f6882c-14ab-49e6-926e-b274af9dc72a_zps0oqihe5k.jpg'
       },
       {
         image: 'https://i.ytimg.com/vi/_7fur-ZOGE4/maxresdefault.jpg'
