@@ -34,7 +34,7 @@
             <!-- <div class="user-info-container"> -->
               <img src="{{user.picture_url}}" width="40" height="35">
               <div id="username">{{user.name}}</div>
-              <button id="remove-user">X</button>
+              <button id="remove-user" ng-click="vm.kickUser(user)">X</button>
             <!-- </div> -->
           </ul>
         </div>

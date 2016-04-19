@@ -28,6 +28,17 @@
 
     var autoplay = "?autoplay=1";
 
+    vm.kickUser = function(user) {
+      $log.info("kicking this user:", user);
+      socket.emit('kick-user', user);
+    }
+
+    socket.on('get kicked user', function(data) {
+      $log.info(data);
+      // window.location.href = 'http://localhost:3000/'
+
+    });
+
     vm.leaveChatroom = function() {
       $log.info("works");
       $state.go('home');
