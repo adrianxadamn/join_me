@@ -205,18 +205,22 @@ a {
 }
 
 .steps {
-  width: 400px;
+  width: 100%;
   margin: auto 20px;
   text-align: center;
-  height: 350px;
+  height: 100%;
   border-right: 4px solid black;
   border-left: 4px solid black;
 }
 
 #step-photos {
-  width: 250px;
+  width: 90%;
   border: 1px solid black;
-  border-radius: 5%;
+  /*border-radius: 5%;*/
+}
+
+.steps > h2, .steps > h3 {
+  margin-top: 0px;
 }
 
 #font-family {
