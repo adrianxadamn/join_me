@@ -17,7 +17,7 @@
     <p class="number-of-users panel-heading">Number of Users: {{(vm.chatroomService.retrieve().users.length) + 1}}/{{vm.chatroomService.retrieve().userCapacity}}</p>
       <div class="chat-box panel panel-default">
           <ul ng-repeat="message in vm.messages track by $index" class="chat-messages">
-            {{vm.authService.currentUser().name}}: {{message}}
+            {{message.username}}: {{message.message}}
           </ul>
       </div>
       <div class="chat-box-input">

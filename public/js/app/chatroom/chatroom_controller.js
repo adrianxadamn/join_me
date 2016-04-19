@@ -59,7 +59,7 @@
     $log.info("LOOK HERE:", vm.youtubeWF);
 
     vm.submitMessage = function() {
-      socket.emit('send message', vm.message);
+      socket.emit('send message', {message: vm.message, username: vm.authService.currentUser().name});
       vm.message = "";
     };
 
