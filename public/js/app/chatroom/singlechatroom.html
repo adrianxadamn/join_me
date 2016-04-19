@@ -31,11 +31,9 @@
 <!--           <img src="{{vm.authService.currentUser().picture_url}}" width="40" height="35">
           <span id="yo" class="label label-warning">{{vm.authService.currentUser().name}}</span> -->
           <ul class="user" ng-repeat="user in vm.users">
-            <!-- <div class="user-info-container"> -->
-              <img src="{{user.picture_url}}" width="40" height="35">
-              <div id="username">{{user.name}}</div>
-              <button id="remove-user" ng-click="vm.kickUser(user)">X</button>
-            <!-- </div> -->
+            <img src="{{user.picture_url}}" width="40" height="35">
+            <div id="username">{{user.name}}</div>
+              <button ng-show="(vm.chatroomService.retrieve().creatorName === vm.authService.currentUser().name)" id="remove-user" ng-click="vm.kickUser(user)">X</button>
           </ul>
         </div>
       </div>
