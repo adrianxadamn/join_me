@@ -17,16 +17,18 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
 </head>
 <body>
-  <nav ng-controller="NavbarController as vm" class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="nav tabs">
-        <button class="btn navbar-btn btn-default" role="presentation"><a ui-sref="home">Home</a></button>
-        <button ng-show="vm.authService.isLoggedIn()" class="btn navbar-btn btn-default" role="presentation"><a ui-sref="profile">Profile</a></button>
-        <button class="btn navbar-btn btn-default" role="presentation"><a ui-sref="chatroom_list">Chatrooms</a></button>
-        <button ng-hide="vm.authService.isLoggedIn()" type="button" class="btn navbar-btn btn-default navbar-right" aria-label="Left Align"><a ui-sref="signin">Sign In</a></button>
-        <button ng-show="vm.authService.isLoggedIn()" ng-click="vm.authService.logout()" type="button" class="btn navbar-btn btn-default navbar-right" aria-label="Left Align"><a ui-sref="home">Sign Out</a></button>
-        <img align="middle" id="logo" src="./images/joinme.png" width="150px" height="60px">
-      </div>
+  <nav class="navbar-container" ng-controller="NavbarController as vm">
+    <div class="navbar-col1">
+      <div class="nav-buttons"><a ui-sref="home">Home</a></div>
+      <div class="nav-buttons" ng-show="vm.authService.isLoggedIn()"><a ui-sref="profile">Profile</a></div>
+      <div class="nav-buttons"><a ui-sref="chatroom_list">Chatrooms</a></div>
+    </div>
+    <div class="navbar-col2">
+      <!-- <img align="middle" id="logo" src="./images/joinme.png"> -->
+    </div>
+    <div class="navbar-col3">
+      <div ng-hide="vm.authService.isLoggedIn()" class="sign-in"><a ui-sref="signin">Sign In</a></div>
+      <div ng-show="vm.authService.isLoggedIn()" ng-click="vm.authService.logout()" class="sign-out"><a ui-sref="home">Sign Out</a></div>
     </div>
   </nav>
 

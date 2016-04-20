@@ -1,9 +1,57 @@
+body, html {
+  margin: 0;
+}
+
+.navbar-container {
+  background-color: black;
+  height: 60px;
+  display: flex;
+  font-family: 'Bangers', cursive;
+}
+
+.navbar-col1 {
+  display: flex;
+  /*background-color: orange;*/
+/*  margin: auto 10px;*/
+}
+
+.navbar-col1 > div {
+  margin: auto 10px;
+}
+
+.navbar-col2 {
+  /*background-color: green;*/
+  background-image: url('../images/joinme.png');
+  background-size: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.navbar-col3 {
+  text-align: right;
+  margin-right: 20px;
+  /*background-color: yellow;*/
+}
+
+.navbar-container * a {
+  color:red;
+}
+
+.navbar-container > div {
+  /*display: inline;*/
+  font-size: 30px;
+  padding: 10px;
+  width: 100%;
+}
+
+/*.navbar-container > .sign-in {
+  float: right;
+}*/
 
 .forms {
   text-align: left;
   max-width: 600px;
   margin: 0 auto;
-
 }
 
 .forms > h1, h1 {
@@ -171,7 +219,7 @@ a {
 }
 
 #carousel {
-  margin: -20px 200px 0px 200px;
+  margin: 0px 200px;
 }
 #slides_control > div{
   height: 200px;
@@ -187,11 +235,6 @@ a {
   left:50%;
   top:20px;
   margin-left:-200px;
-}
-
-#logo {
-  margin: auto 375px;
-  /*margin: auto 460px;*/
 }
 
 .home-container {
